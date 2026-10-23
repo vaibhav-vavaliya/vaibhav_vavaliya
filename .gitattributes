@@ -1,0 +1,4 @@
+# Keep binary files byte-for-byte (no line-ending conversion)
+*.pdf binary
+*.png binary
+*.ico binary

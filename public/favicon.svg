@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 2 46 46">
+  <!-- Byte the cat: ginger normally, white with golden eyes when the device is in dark mode -->
+  <style>
+    .fur { fill: #f0a35e; }
+    .stripe { fill: #d9813f; }
+    .ear { fill: #ffb7a6; }
+    .eye { fill: #2a2321; }
+    .line { stroke: #2a2321; }
+    @media (prefers-color-scheme: dark) {
+      .fur { fill: #f6f6f9; }
+      .stripe { fill: #dcdce6; }
+      .ear { fill: #ffc2cf; }
+      .eye { fill: #e0a100; }
+      .line { stroke: #7a7a8c; }
+    }
+  </style>
+  <polygon class="fur" points="22,20 26,4 36,16"/>
+  <polygon class="fur" points="46,16 56,4 60,20"/>
+  <polygon class="ear" points="25,16 27,9 32,15"/>
+  <polygon class="ear" points="50,15 55,9 57,16"/>
+  <rect class="fur" x="20" y="12" width="42" height="34" rx="12"/>
+  <rect class="stripe" x="28" y="12" width="6" height="8" rx="3"/>
+  <rect class="stripe" x="38" y="12" width="6" height="8" rx="3"/>
+  <rect class="stripe" x="48" y="12" width="6" height="8" rx="3"/>
+  <rect class="eye" x="30" y="25" width="5" height="8" rx="2.5"/>
+  <rect class="eye" x="47" y="25" width="5" height="8" rx="2.5"/>
+  <rect x="38" y="34" width="6" height="4" rx="2" fill="#e5787a"/>
+  <path class="line" d="M37 39 q4 3 8 0" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+</svg>

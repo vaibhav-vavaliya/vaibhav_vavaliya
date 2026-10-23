@@ -1,0 +1,233 @@
+/* Blockstead tokens, generated from tokens.json. Light theme (Roblox-inspired: clean white + cool grey) + Black-brick dark theme. */
+
+:root,
+:root[data-theme='ivory'] {
+  color-scheme: light;
+  --bg-000: #f2f4f5;
+  --bg-100: #ffffff;
+  --bg-200: #e8eaed;
+  --bg-sunken: #e3e6e9;
+  --edge: #cfd3d8;
+  --line: #dfe2e6;
+  --ink: #191b1d;
+  --ink-muted: #5f6670;
+  --blue: #335fff;
+  --blue-edge: #1f3fbf;
+  --green: #00b06f;
+  --green-edge: #00804f;
+  --green-ink: #007a4b;
+  --yellow: #ffc83d;
+  --yellow-edge: #d99a12;
+  --red: #d13a30;
+  --red-edge: #93241c;
+  --on-color: #ffffff;
+  --on-bright: #1b1f2a;
+  --stud: #191b1d0a;
+  --accent: var(--blue);
+  --plate-image: radial-gradient(circle at center, var(--stud) 0 5px, transparent 5.5px);
+  --plate-size: 32px 32px;
+  --tray-image: none;
+  --tray-shadow: none;
+  --wall-display: none;
+  --orb: #ffd23f;
+  --orb-size: 46px;
+  --orb-radius: 50%;
+  --orb-glow: 0 0 0 7px #ffd23f40, 0 0 34px 6px #ffd23f80;
+  --orb-rays: repeating-conic-gradient(#ffd23f66 0 9deg, transparent 9deg 30deg);
+  --tee: #1d1d22;
+  --tee-edge: #0a0a0d;
+  --cat-fur: #f0a35e;
+  --cat-stripe: #d9813f;
+  --cat-belly: #ffd9b0;
+  --cat-eye: #2a2321;
+  --cat-line: #2a2321;
+  --cat-ear: #ffb7a6;
+  --cat-cheek: #ffb38a;
+  --cat-glow: none;
+  --stage-bg: linear-gradient(#d9ecff, #f3f8fd);
+  /* green studded baseplate: studs on the top face, darker plastic edge at the bottom */
+  --stage-floor:
+    radial-gradient(ellipse 8px 4px at 14px 7px, #7fe0b4 0 96%, #00804f 100%) 0 0 / 28px 14px repeat-x,
+    linear-gradient(#33c48a, #33c48a) 0 0 / 100% 14px no-repeat,
+    linear-gradient(#00b06f 0 74%, #00804f 74% 100%);
+  --stage-floor-radius: 0;
+  --stage-floor-x: 0%;
+  --stage-floor-h: 46px;
+  --stage-feet: 38px;
+  --stage-shadow: 34px;
+  --cursor: url("/cursors/arrow-light.svg") 4 3, auto;
+  --cursor-pointer: url("/cursors/pointer-light.svg") 4 3, pointer;
+  --room-wall: #e4ecf7;
+  --room-trim: #cdd9ea;
+  --room-floor: #d9a46c;
+  --room-floor-line: #c08b55;
+  --room-desk: #9a6640;
+  --room-desk-edge: #774a2c;
+  --room-rug: #ffffff;
+  --room-rug-line: #c9d6ff;
+  --room-glow: 0.28;
+  --room-day: block;
+  --room-night: none;
+
+  --block-edge: 0 3px 0 0 #cfd3d8;
+  --lift: 0 14px 24px -12px #191b1d38;
+  --focus: 0 0 0 3px #ffffff, 0 0 0 6px #335fff;
+
+  --font-display: var(--font-fredoka), 'Nunito', system-ui, sans-serif;
+  --font-body: var(--font-nunito), system-ui, sans-serif;
+  --font-pixel: var(--font-pixelify), 'Courier New', monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --edge-depth: 4px;
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+:root[data-theme='night'] {
+  color-scheme: dark;
+  /* Black bricks: pure black page, black-on-black brick wall, near-black blocks. */
+  --bg-000: #000000;
+  --bg-100: #111113;
+  --bg-200: #1c1c20;
+  --bg-sunken: #070708;
+  --edge: #000000;
+  --line: #26262c;
+  --ink: #eeeef2;
+  --ink-muted: #a6a6b1;
+  --blue: #1f6ae0;
+  --blue-edge: #1d4fa8;
+  --green: #4cb847;
+  --green-edge: #2f8a2b;
+  --green-ink: #6fd36a;
+  --stud: #ffffff00;
+  --accent: #8fb4ff;
+  --plate-image: url("/textures/black-bricks.svg");
+  --plate-size: 128px 128px;
+  --tray-image: url("/textures/stone-bricks.svg");
+  --wall-display: block;
+  --orb: url("/textures/mc-moon.svg") 0 0 / 100% 100%;
+  --orb-size: 40px;
+  --orb-radius: 0;
+  --orb-glow: 0 0 28px 4px #f3eedb40;
+  --orb-rays: none;
+  --tee: #f1ede2;
+  --tee-edge: #cfc8b6;
+  --cat-fur: #f6f6f9;
+  --cat-stripe: #dcdce6;
+  --cat-belly: #ffffff;
+  --cat-eye: #e0a100;
+  --cat-line: #7a7a8c;
+  --cat-ear: #ffc2cf;
+  --cat-cheek: #ffd6dd;
+  --cat-glow: none;
+  --stage-bg: linear-gradient(#0c0c11, #17171e);
+  --stage-floor: url("/textures/mc-grass.svg") 0 0 / 40px 40px repeat-x;
+  --stage-floor-radius: 0;
+  --stage-floor-x: 0%;
+  --stage-floor-h: 40px;
+  --stage-feet: 38px;
+  --stage-shadow: 34px;
+  --cursor: url("/cursors/arrow-night.svg") 1 1, auto;
+  --cursor-pointer: url("/cursors/pickaxe-night.svg") 6 2, pointer;
+  --room-wall: #121216;
+  --room-trim: #1a1a20;
+  --room-floor: #2b2019;
+  --room-floor-line: #1f1611;
+  --room-desk: #4a3324;
+  --room-desk-edge: #2c1d14;
+  --room-rug: #1d1d24;
+  --room-rug-line: #2f2f3a;
+  --room-glow: 0.5;
+  --room-day: none;
+  --room-night: block;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --edge-depth: 6px;
+  --tray-shadow: inset 0 0 0 2px #000000, inset 0 8px 18px -6px #000000a6;
+  --block-edge: 0 6px 0 0 #000000;
+  --lift: 0 18px 28px -14px #000000cc;
+  --focus: 0 0 0 3px #000000, 0 0 0 6px #5b9bff;
+}
+
+/* Before the theme script runs (or with JS off), follow the device. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    /* Black bricks: pure black page, black-on-black brick wall, near-black blocks. */
+    --bg-000: #000000;
+    --bg-100: #111113;
+    --bg-200: #1c1c20;
+    --bg-sunken: #070708;
+    --edge: #000000;
+    --line: #26262c;
+    --ink: #eeeef2;
+    --ink-muted: #a6a6b1;
+    --blue: #1f6ae0;
+    --blue-edge: #1d4fa8;
+    --green: #4cb847;
+    --green-edge: #2f8a2b;
+    --green-ink: #6fd36a;
+    --stud: #ffffff00;
+    --accent: #8fb4ff;
+    --plate-image: url("/textures/black-bricks.svg");
+    --plate-size: 128px 128px;
+    --tray-image: url("/textures/stone-bricks.svg");
+    --wall-display: block;
+    --orb: url("/textures/mc-moon.svg") 0 0 / 100% 100%;
+    --orb-size: 40px;
+    --orb-radius: 0;
+    --orb-glow: 0 0 28px 4px #f3eedb40;
+    --orb-rays: none;
+    --tee: #f1ede2;
+    --tee-edge: #cfc8b6;
+    --cat-fur: #f6f6f9;
+    --cat-stripe: #dcdce6;
+    --cat-belly: #ffffff;
+    --cat-eye: #e0a100;
+    --cat-line: #7a7a8c;
+    --cat-ear: #ffc2cf;
+    --cat-cheek: #ffd6dd;
+    --cat-glow: none;
+    --stage-bg: linear-gradient(#0c0c11, #17171e);
+    --stage-floor: url("/textures/mc-grass.svg") 0 0 / 40px 40px repeat-x;
+    --stage-floor-radius: 0;
+    --stage-floor-x: 0%;
+    --stage-floor-h: 40px;
+    --stage-feet: 38px;
+    --stage-shadow: 34px;
+    --cursor: url("/cursors/arrow-night.svg") 1 1, auto;
+    --cursor-pointer: url("/cursors/pickaxe-night.svg") 6 2, pointer;
+    --room-wall: #121216;
+    --room-trim: #1a1a20;
+    --room-floor: #2b2019;
+    --room-floor-line: #1f1611;
+    --room-desk: #4a3324;
+    --room-desk-edge: #2c1d14;
+    --room-rug: #1d1d24;
+    --room-rug-line: #2f2f3a;
+    --room-glow: 0.5;
+    --room-day: none;
+    --room-night: block;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --edge-depth: 6px;
+    --tray-shadow: inset 0 0 0 2px #000000, inset 0 8px 18px -6px #000000a6;
+    --block-edge: 0 6px 0 0 #000000;
+    --lift: 0 18px 28px -14px #000000cc;
+    --focus: 0 0 0 3px #000000, 0 0 0 6px #5b9bff;
+  }
+}
