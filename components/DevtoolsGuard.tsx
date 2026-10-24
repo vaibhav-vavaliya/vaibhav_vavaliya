@@ -10,6 +10,9 @@ import { unlock } from './Achievements';
  */
 export function DevtoolsGuard() {
   useEffect(() => {
+    // Off while developing so devtools (F12, device toolbar, inspect) work as usual.
+    if (process.env.NODE_ENV !== 'production') return;
+
     const caught = () => unlock('Curious one: no peeking!');
 
     const onKey = (e: KeyboardEvent) => {

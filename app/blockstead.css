@@ -501,8 +501,9 @@ svg {
 
 /* ---------- Section scaffolding ---------- */
 
+/* top padding only, so .bs-container keeps its side gutters */
 .bs-section {
-  padding: var(--space-16) 0 0;
+  padding-top: var(--space-16);
 }
 
 .bs-section-head {
@@ -911,6 +912,8 @@ svg {
 .bs-buddy-panel {
   width: min(360px, calc(100vw - 32px));
   max-height: min(540px, calc(100vh - 160px));
+  /* dvh follows the mobile browser bar and on-screen keyboard */
+  max-height: min(540px, calc(100dvh - 160px));
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1838,6 +1841,8 @@ textarea.bs-input {
 
 /* mini stage: same sky/floor as the hero stage (pixel night sky + grass by night) */
 .bs-portrait {
+  /* figure width; the sleeping cat sizes and positions itself from it */
+  --pf: 140px;
   position: relative;
   height: 230px;
   border-radius: var(--radius-sm);
@@ -1854,8 +1859,8 @@ textarea.bs-input {
   position: absolute;
   left: 50%;
   bottom: calc(var(--stage-feet) * 0.7);
-  width: 140px;
-  margin-left: -70px;
+  width: var(--pf);
+  margin-left: calc(var(--pf) / -2);
 }
 
 .bs-portrait-fig svg {
@@ -1872,9 +1877,9 @@ textarea.bs-input {
 /* Byte asleep at the avatar's feet, head toward the legs */
 .bs-portrait-cat {
   position: absolute;
-  left: calc(50% - 120px);
+  left: max(4px, calc(50% - var(--pf) / 2 - var(--pf) * 0.36));
   bottom: calc(var(--stage-feet) * 0.7 - 3px);
-  width: 84px;
+  width: calc(var(--pf) * 0.6);
 }
 
 .bs-portrait-cat svg {
@@ -1885,8 +1890,8 @@ textarea.bs-input {
 }
 
 .bs-portrait-cat .bs-pixel-cat {
-  width: 70px;
-  margin-left: 8px;
+  width: 83%;
+  margin-left: 10%;
   image-rendering: pixelated;
 }
 
@@ -2163,8 +2168,23 @@ textarea.bs-input {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .bs-tiles {
-    grid-template-columns: minmax(0, 1fr);
+  /* tablet: player card sits beside its stage instead of a tall full-width column */
+  .bs-profile-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--space-4);
+  }
+
+  /* the stage stretches to the stats column, so the figure grows to fill it */
+  .bs-profile-card .bs-portrait {
+    --pf: 176px;
+    grid-row: span 4;
+    height: 100%;
+    min-height: 270px;
+  }
+
+  .bs-profile-card .bs-player-tag {
+    justify-self: start;
   }
 }
 
@@ -2173,8 +2193,31 @@ textarea.bs-input {
     padding: var(--space-4);
   }
 
+  .bs-profile-card {
+    display: flex;
+  }
+
+  .bs-profile-card .bs-portrait {
+    --pf: 132px;
+    height: 230px;
+    min-height: 0;
+  }
+
+  .bs-tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* status pill drops under the title so the title keeps the full width */
   .bs-quest {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 14px minmax(0, 1fr);
+    column-gap: var(--space-3);
+    row-gap: var(--space-1);
+  }
+
+  .bs-quest-state {
+    grid-column: 2;
+    justify-self: start;
   }
 }
 
@@ -2244,6 +2287,14 @@ textarea.bs-input {
   animation: bs-pop-in 260ms var(--spring) both;
   transform-box: fill-box;
   transform-origin: 20% 100%;
+}
+
+.bs-room-bubble--left {
+  transform-origin: 0% 50%;
+}
+
+.bs-room-bubble--right {
+  transform-origin: 100% 50%;
 }
 
 .bs-caret {
@@ -3070,6 +3121,260 @@ textarea.bs-input {
 
   .bs-btn-row .bs-btn {
     flex: 1 1 auto;
+  }
+
+  /* tighter rhythm and type on phones */
+  html {
+    scroll-padding-top: 96px;
+  }
+
+  .bs-section {
+    padding-top: var(--space-12);
+  }
+
+  .bs-section-head {
+    margin-bottom: var(--space-6);
+  }
+
+  #main {
+    padding-bottom: var(--space-12);
+  }
+
+  .bs-hero {
+    gap: var(--space-8);
+    padding-top: var(--space-8);
+  }
+
+  .bs-hero-name {
+    margin: var(--space-3) 0 var(--space-4);
+    font-size: clamp(48px, 15vw, 72px);
+  }
+
+  .bs-hero-tagline,
+  .bs-message-copy p,
+  .bs-bubble {
+    font-size: 17px;
+    line-height: 28px;
+  }
+
+  .bs-hero-tagline {
+    margin-bottom: var(--space-6);
+  }
+
+  .bs-btn--lg {
+    min-height: 52px;
+    padding: var(--space-3) var(--space-6);
+    font-size: 17px;
+  }
+
+  .bs-stats {
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+  }
+
+  .bs-stat {
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .bs-xp {
+    max-width: none;
+  }
+
+  /* the card sets its own height; the extra room only held the floating bricks */
+  .bs-stage-wrap {
+    min-height: 0;
+    padding: var(--space-6) 0 var(--space-2);
+  }
+
+  .bs-avatar-slot {
+    width: min(100%, 360px);
+  }
+
+  /* figure shrinks with the stage so the head never clips at the top */
+  .bs-stage {
+    height: 270px;
+  }
+
+  .bs-avatar-figure {
+    width: 160px;
+    margin-left: -80px;
+  }
+
+  .bs-chat,
+  .bs-side-card,
+  .bs-step-card {
+    padding: var(--space-4);
+  }
+
+  .bs-card-title {
+    font-size: 21px;
+    line-height: 26px;
+  }
+
+  .bs-card-rating {
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+  }
+
+  /* The whole room fits the card; only the speech bubbles grow so they stay readable */
+  .bs-room {
+    padding: var(--space-3);
+  }
+
+  .bs-room-bubble {
+    scale: 1.6;
+  }
+
+  /* Badge tooltips open toward the inside of the 2-column grid so they stay on screen */
+  .bs-tooltip {
+    min-width: 0;
+    width: max-content;
+    max-width: min(220px, calc(100vw - 48px));
+  }
+
+  .bs-badges > li:nth-child(odd) .bs-tooltip {
+    left: 0;
+    transform: translateY(6px);
+  }
+
+  .bs-badges > li:nth-child(even) .bs-tooltip {
+    left: auto;
+    right: 0;
+    transform: translateY(6px);
+  }
+
+  .bs-badges > li .bs-badge:hover .bs-tooltip,
+  .bs-badges > li .bs-badge:focus-visible .bs-tooltip {
+    transform: none;
+  }
+
+  .bs-catpeek {
+    top: -44px;
+    right: var(--space-4);
+    width: 112px;
+    height: 64px;
+  }
+
+  .bs-footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bs-footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bs-toasts {
+    top: 88px;
+    left: var(--space-4);
+    right: var(--space-4);
+    justify-items: end;
+  }
+
+  .bs-buddy {
+    right: var(--space-3);
+  }
+
+  .bs-buddy-panel {
+    width: calc(100vw - 24px);
+  }
+}
+
+@media (max-width: 480px) {
+  /* no gutter beside the full-width card, so the floating bricks would only clip */
+  .bs-floaters {
+    display: none;
+  }
+
+  .bs-room-bubble {
+    scale: 1.9;
+  }
+}
+
+@media (max-width: 420px) {
+  .bs-hero .bs-btn-row .bs-btn {
+    flex-basis: 100%;
+  }
+
+  .bs-badge {
+    padding: var(--space-3);
+  }
+
+  .bs-attr {
+    grid-template-columns: 64px minmax(0, 1fr) 18px;
+  }
+
+  .bs-h2 {
+    font-size: 32px;
+  }
+}
+
+/* very small phones: the face alone is the logo so the header buttons fit */
+@media (max-width: 374px) {
+  .bs-brand-name {
+    display: none;
+  }
+
+  .bs-stage {
+    height: 250px;
+  }
+
+  .bs-avatar-figure {
+    width: 146px;
+    margin-left: -73px;
+  }
+
+  .bs-profile-card .bs-portrait {
+    --pf: 120px;
+    height: 210px;
+  }
+
+  .bs-container {
+    padding: 0 var(--space-3);
+  }
+}
+
+/* short screens (phones in landscape): keep the chat input reachable */
+@media (max-height: 560px) {
+  .bs-buddy {
+    bottom: 84px;
+  }
+
+  .bs-buddy-panel {
+    max-height: calc(100vh - 100px);
+    max-height: calc(100dvh - 100px);
+  }
+
+  .bs-buddy-log {
+    min-height: 80px;
+  }
+
+  .bs-buddy-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .bs-buddy-chip {
+    flex: none;
+  }
+}
+
+/* touch screens: no sticky hover lifts after a tap */
+@media (hover: none) {
+  .bs-card:hover,
+  .bs-badge:hover,
+  .bs-btn:hover:not(:active) {
+    transform: none;
+  }
+
+  .bs-card:hover {
+    box-shadow: var(--block-edge);
+  }
+
+  .bs-btn:hover:not(:active) {
+    box-shadow: 0 var(--edge-depth) 0 0 var(--btn-edge);
   }
 }
 

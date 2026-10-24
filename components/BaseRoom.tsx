@@ -69,14 +69,18 @@ function Hit({
   );
 }
 
-/** Speech bubble. The pointer sits under the bubble, or on its left edge for things beside it. */
-function Bubble({ x, y, text, tail = 'bottom' }: { x: number; y: number; text: string; tail?: 'bottom' | 'left' }) {
+/** Speech bubble. The pointer sits under the bubble, or on a side edge for things beside it. */
+function Bubble({ x, y, text, tail = 'bottom' }: { x: number; y: number; text: string; tail?: 'bottom' | 'left' | 'right' }) {
   // Sized to the text: the pixel font is roughly 7px per character at 13px.
   const w = Math.round(text.length * 7.2 + 30);
   const pointer =
-    tail === 'left' ? `M${x + 1} ${y + 8} l-9 5 l9 5 z` : `M${x + 16} ${y + 25} l7 9 l5 -9 z`;
+    tail === 'left'
+      ? `M${x + 1} ${y + 8} l-9 5 l9 5 z`
+      : tail === 'right'
+        ? `M${x + w - 1} ${y + 8} l9 5 l-9 5 z`
+        : `M${x + 16} ${y + 25} l7 9 l5 -9 z`;
   return (
-    <g className="bs-room-bubble" aria-hidden="true">
+    <g className={`bs-room-bubble bs-room-bubble--${tail}`} aria-hidden="true">
       <path d={pointer} fill="var(--bg-100)" stroke="var(--line)" strokeWidth={2} strokeLinejoin="round" />
       <rect x={x} y={y} width={w} height={26} rx={8} fill="var(--bg-100)" stroke="var(--line)" strokeWidth={2} />
       <path d={pointer} fill="var(--bg-100)" />
@@ -376,7 +380,8 @@ export function BaseRoom() {
             api-01
           </text>
         </Hit>
-        {server && <Bubble x={680} y={284} text="uptime 99.9%" tail="left" />}
+        {/* left of the tower so it has room to grow on phones without leaving the room */}
+        {server && <Bubble x={466} y={289} text="uptime 99.9%" tail="right" />}
 
         {/* Monitor: types code; click to deploy */}
         <Hit label="Computer: deploy the code" onPress={pressMonitor}>

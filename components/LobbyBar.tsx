@@ -30,6 +30,21 @@ export function LobbyBar() {
     return () => io.disconnect();
   }, []);
 
+  // The mobile menu closes on Escape or a tap anywhere outside the bar.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    const onDown = (e: PointerEvent) => {
+      if (!(e.target as Element).closest('.bs-lobby-wrap')) setOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onDown);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onDown);
+    };
+  }, [open]);
+
   const tabs = (onClick?: () => void) =>
     nav.map((n) => (
       <li key={n.id}>
