@@ -70,6 +70,15 @@ export type Build = {
 
 export const builds: Build[] = [
   {
+    title: 'Pulse Guardian',
+    blurb: 'Touch-free patient monitoring for wards and ICUs: a bedside hub reads vitals on the device from radar, thermal, camera and audio, and alarms only when a second sensor confirms.',
+    stack: 'NestJS · Next.js · Python',
+    kind: 'Personal',
+    stats: ['On-device vitals', 'Cross-sensor alarms'],
+    href: 'https://github.com/vaibhav-vavaliya/PulseGuardain',
+    palette: ['green', 'red', 'blue'],
+  },
+  {
     title: 'Cura',
     blurb: 'A hospital service management system for running hospital services digitally. Designing the backend architecture and REST APIs.',
     stack: 'NestJS',
@@ -93,15 +102,6 @@ export const builds: Build[] = [
     kind: 'Personal',
     stats: ['REST endpoints', 'Secure login'],
     palette: ['green', 'yellow', 'blue'],
-  },
-  {
-    title: 'ShipEase Kids',
-    blurb: "An e-commerce store for kids' toys: the backend and storefront for browsing and selling toy products online.",
-    stack: 'Python · Django',
-    kind: 'Personal',
-    stats: ['E-commerce', 'Storefront + backend'],
-    href: 'https://github.com/vaibhav-vavaliya/Shipease_KIds',
-    palette: ['red', 'yellow', 'blue'],
   },
 ];
 
@@ -160,7 +160,7 @@ export const journey: Role[] = [
     title: 'Diploma, Information Technology',
     place: 'P P Savani University',
     period: 'Completed',
-    note: 'Where the first builds happened, including ShipEase Kids.',
+    note: 'Where the first builds happened.',
     color: 'yellow',
   },
 ];
