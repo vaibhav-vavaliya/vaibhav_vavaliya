@@ -2,7 +2,7 @@ import { DownloadSimple } from '@phosphor-icons/react/dist/ssr/DownloadSimple';
 import { EnvelopeSimple } from '@phosphor-icons/react/dist/ssr/EnvelopeSimple';
 import { GithubLogo } from '@phosphor-icons/react/dist/ssr/GithubLogo';
 import { LinkedinLogo } from '@phosphor-icons/react/dist/ssr/LinkedinLogo';
-import { badges, builds, journey, profile } from '@/data/profile';
+import { badges, builds, experience, journey, profile } from '@/data/profile';
 import { Achievements } from '@/components/Achievements';
 import { BadgeGrid, BadgeLegend } from '@/components/BadgeGrid';
 import { BlockButton } from '@/components/BlockButton';
@@ -12,6 +12,7 @@ import { ChatBuddy } from '@/components/ChatBuddy';
 import { Confetti } from '@/components/Confetti';
 import { DevtoolsGuard } from '@/components/DevtoolsGuard';
 import { ExperienceCard } from '@/components/ExperienceCard';
+import { ExperienceLog } from '@/components/ExperienceLog';
 import { Hero } from '@/components/Hero';
 import { Journey } from '@/components/Journey';
 import { LobbyBar } from '@/components/LobbyBar';
@@ -54,6 +55,16 @@ export default function HomeScreen() {
           <PlayerProfile />
         </section>
 
+        <section id="experience" className="bs-container bs-section" aria-labelledby="experience-title">
+          <SectionHead
+            id="experience"
+            eyebrow="Guild history"
+            title="Experience"
+            aside={<span className="bs-meta">{experience.length === 1 ? '1 role' : `${experience.length} roles`}</span>}
+          />
+          <ExperienceLog jobs={experience} />
+        </section>
+
         <section id="base" className="bs-container bs-section" aria-labelledby="base-title">
           <SectionHead
             id="base"
@@ -69,7 +80,7 @@ export default function HomeScreen() {
         <section id="builds" className="bs-container bs-section" aria-labelledby="builds-title">
           <SectionHead
             id="builds"
-            eyebrow="Experiences"
+            eyebrow="Projects"
             title="Builds"
             aside={<span className="bs-meta">{builds.length} builds</span>}
           />

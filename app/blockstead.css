@@ -2221,6 +2221,158 @@ textarea.bs-input {
   }
 }
 
+/* ---------- Experience: guild cards ---------- */
+
+.bs-exp-list {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bs-exp {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: var(--space-8);
+  padding: var(--space-6);
+}
+
+.bs-exp-side {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--bg-sunken);
+}
+
+.bs-exp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.bs-exp-logo {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.bs-exp-head .bs-player-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.bs-exp-role {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.bs-exp-company {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--blue);
+}
+
+.bs-exp-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bs-exp-main .bs-quests-title {
+  margin: 0;
+}
+
+.bs-exp-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bs-exp-point {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--bg-100);
+  border: 1.5px solid var(--line);
+  box-shadow: 0 3px 0 0 var(--edge);
+}
+
+.bs-exp-point .bs-quest-gem {
+  margin-top: 6px;
+}
+
+.bs-exp-point > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.bs-exp-point strong {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.bs-exp-point strong + span {
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--ink-muted);
+}
+
+.bs-exp-stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+@media (max-width: 960px) {
+  .bs-exp {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 640px) {
+  .bs-exp {
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .bs-exp-points {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bs-exp-role {
+    font-size: 21px;
+    line-height: 26px;
+  }
+}
+
 /* ---------- Base room ---------- */
 
 .bs-room {
@@ -3006,6 +3158,18 @@ textarea.bs-input {
 }
 
 /* ---------- Responsive ---------- */
+
+/* small laptops: tighter tabs so all seven fit beside the logo and buttons */
+@media (max-width: 1180px) {
+  .bs-tab {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+
+  .bs-lobby {
+    gap: var(--space-3);
+  }
+}
 
 @media (max-width: 1024px) {
   .bs-builds {

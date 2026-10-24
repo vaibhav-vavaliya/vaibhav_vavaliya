@@ -55,7 +55,10 @@ function answer(raw: string): Msg {
     return {
       from: 'byte',
       text: `${journey.map((r) => `${r.title}, ${r.place} (${r.period})`).join('. ')}. At Visionite Tech: ${journey[1].note}`,
-      actions: [{ label: 'See the journey', href: '#journey' }],
+      actions: [
+        { label: 'See the experience', href: '#experience' },
+        { label: 'See the journey', href: '#journey' },
+      ],
     };
   }
   if (has(q, ['hire', 'contact', 'email', 'reach', 'available', 'freelance', 'work with', 'talk'])) {

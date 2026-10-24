@@ -57,6 +57,42 @@ export const about = {
   ],
 };
 
+export type Job = {
+  role: string;
+  company: string;
+  initials: string; // shown on the company block
+  type: string; // e.g. "Internship", "Full-time"
+  location: string;
+  period: string;
+  length: string;
+  color: BrickColor;
+  points: { title: string; detail: string }[]; // what was done, one quest each
+  stack: string[];
+};
+
+// The Experience section, newest first.
+export const experience: Job[] = [
+  {
+    role: 'Backend Developer Intern',
+    company: 'Visionite Tech',
+    initials: 'VT',
+    type: 'Internship',
+    location: 'Surat, Gujarat',
+    period: 'Mar 2026 — Sep 2026',
+    length: '6 months',
+    color: 'green',
+    points: [
+      { title: 'REST APIs', detail: "Designed and built the APIs powering the company's web applications, moving data between frontend clients and backend services." },
+      { title: 'Role-based access (RBAC)', detail: 'Built a complete JWT authentication and authorization system that controls what each user role can reach.' },
+      { title: 'API rate limiting', detail: 'Protected endpoints from abuse and kept services stable under heavy traffic.' },
+      { title: 'Database design', detail: 'Modelled schemas and relationships for application data in SQL and NoSQL databases.' },
+      { title: 'Production websites', detail: 'Delivered production-ready websites for live company projects, from backend logic to deployment.' },
+      { title: 'Containers & caching', detail: 'Deployed with Docker and Kubernetes, and used Redis for caching and fast data access.' },
+    ],
+    stack: ['NestJS', 'REST', 'JWT', 'SQL', 'NoSQL', 'Redis', 'Docker', 'Kubernetes'],
+  },
+];
+
 export type Build = {
   title: string;
   blurb: string;
@@ -168,6 +204,7 @@ export const journey: Role[] = [
 export const nav = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
   { id: 'base', label: 'Base' },
   { id: 'builds', label: 'Builds' },
   { id: 'badges', label: 'Badges' },
