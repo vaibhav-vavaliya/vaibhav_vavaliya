@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from 'next';
-import { Fredoka, Nunito, Pixelify_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 import { themeScript } from '@/components/ThemeToggle';
 import { profile } from '@/data/profile';
 import './tokens.css';
 import './blockstead.css';
 
-const fredoka = Fredoka({ subsets: ['latin'], weight: ['600', '700'], variable: '--font-fredoka' });
-const nunito = Nunito({ subsets: ['latin'], weight: ['500', '700', '800'], variable: '--font-nunito' });
-const pixelify = Pixelify_Sans({ subsets: ['latin'], weight: ['500'], variable: '--font-pixelify' });
+// Google Fonts (latin subset) kept in the repo so builds never depend on fetching them.
+const fredoka = localFont({ src: './fonts/fredoka-latin.woff2', weight: '300 700', variable: '--font-fredoka' });
+const nunito = localFont({ src: './fonts/nunito-latin.woff2', weight: '200 1000', variable: '--font-nunito' });
+const pixelify = localFont({ src: './fonts/pixelify-sans-latin.woff2', weight: '400 700', variable: '--font-pixelify' });
 
 export const metadata: Metadata = {
   title: `${profile.fullName} · ${profile.role}`,
