@@ -20,6 +20,7 @@ import { MessageForm } from '@/components/MessageForm';
 import { PlayerProfile } from '@/components/PlayerProfile';
 import { RevealObserver } from '@/components/RevealObserver';
 import { ScrollTop } from '@/components/ScrollTop';
+import { StructuredData } from '@/components/StructuredData';
 
 function SectionHead({ id, eyebrow, title, aside }: { id: string; eyebrow: string; title: string; aside?: React.ReactNode }) {
   return (
@@ -43,6 +44,7 @@ export default function HomeScreen() {
 
   return (
     <>
+      <StructuredData />
       <a className="bs-skip" href="#main">
         Skip to content
       </a>

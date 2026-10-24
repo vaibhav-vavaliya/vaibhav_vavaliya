@@ -9,6 +9,9 @@ export const profile = {
   fullName: 'Vaibhav Vavaliya',
   handle: '@vaibhav-vavaliya',
   role: 'Full stack & backend developer',
+  // Live address: used for the canonical URL, sitemap, social cards and structured data.
+  // Change it here if the site moves to a custom domain.
+  siteUrl: 'https://vaibhav-vavaliya.vercel.app',
   tagline:
     'Full stack & backend developer. I build REST APIs, lock them down with JWT role-based auth, and ship them in containers.',
   location: 'Surat, Gujarat, India',

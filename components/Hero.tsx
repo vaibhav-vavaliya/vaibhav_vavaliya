@@ -32,8 +32,9 @@ export function Hero() {
     <section id="home" className="bs-container bs-hero" aria-labelledby="hero-name">
       <div>
         <StatusChip className="bs-snap" style={i(0)} />
+        {/* Full name in the h1: the strongest on-page signal for searches of the name */}
         <h1 id="hero-name" className="bs-hero-name bs-snap" style={i(1)}>
-          {profile.name}
+          {profile.fullName}
           <span className="bs-dot-blue">.</span>
         </h1>
         <p className="bs-hero-tagline bs-snap" style={i(2)}>
