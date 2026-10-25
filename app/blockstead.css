@@ -3573,3 +3573,319 @@ textarea.bs-input {
     display: none;
   }
 }
+
+/* ---------- Boss fight (the hero's Play button) ---------- */
+
+.bs-boss {
+  position: fixed;
+  inset: 0;
+  z-index: 145;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
+  overflow-y: auto;
+  animation: bs-boss-fade 0.2s ease-out;
+}
+
+.bs-boss-panel {
+  width: 100%;
+  max-width: 560px;
+  padding: var(--space-6);
+  animation: bs-boss-pop 0.3s var(--spring);
+}
+
+.bs-boss-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.bs-boss-eyebrow {
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+
+.bs-boss-screen {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+
+.bs-boss-screen > p {
+  margin: 0;
+}
+
+.bs-boss-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  outline: none;
+}
+
+.bs-boss-rules {
+  margin: 0;
+  padding-left: var(--space-6);
+  display: grid;
+  gap: var(--space-1);
+}
+
+.bs-boss-bars {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.bs-boss-hp {
+  flex: 1;
+  display: grid;
+  gap: var(--space-1);
+  font-size: 0.8rem;
+}
+
+.bs-boss-meter {
+  display: block;
+  height: 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg-sunken);
+  overflow: hidden;
+}
+
+.bs-boss-meter i {
+  display: block;
+  height: 100%;
+  width: calc(var(--hp) * 100%);
+  background: var(--red);
+  transition: width 0.4s var(--spring);
+}
+
+.bs-boss-lives {
+  display: flex;
+  gap: 2px;
+  color: var(--red);
+}
+
+.bs-boss-lives .is-lost {
+  color: var(--ink-muted);
+  opacity: 0.5;
+}
+
+.bs-boss-hp.is-hit,
+.bs-boss-lives.is-hit {
+  animation: bs-boss-shake 0.4s ease-in-out;
+}
+
+.bs-boss-monitor {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: #0f1a14;
+  color: #7dffa8;
+}
+
+.bs-boss-monitor-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.bs-boss-ecg {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: var(--space-2) 0;
+}
+
+.bs-boss-ecg path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-dasharray: 420;
+  animation: bs-boss-ecg 2.4s linear infinite;
+}
+
+.bs-boss-alert {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  color: #ffd166;
+  font-weight: 700;
+  animation: bs-boss-blink 1s steps(2, start) infinite;
+}
+
+.bs-boss-sensors {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.bs-boss-sensor {
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+  padding: var(--space-2) var(--space-3);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--bg-100);
+  color: var(--ink);
+  box-shadow: var(--block-edge);
+  text-align: left;
+  font: inherit;
+  cursor: var(--cursor-pointer, pointer);
+  transition: transform 0.15s var(--spring);
+}
+
+.bs-boss-sensor:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.bs-boss-sensor:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.bs-boss-sensor:disabled {
+  cursor: default;
+}
+
+.bs-boss-sensor-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-weight: 700;
+}
+
+.bs-boss-sensor-read {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.bs-boss-sensor.is-flagged {
+  border-color: var(--yellow-edge);
+  background: color-mix(in srgb, var(--yellow) 25%, var(--bg-100));
+}
+
+.bs-boss-sensor.is-agree {
+  border-color: var(--red-edge);
+  background: color-mix(in srgb, var(--red) 18%, var(--bg-100));
+}
+
+.bs-boss-sensor.is-disagree {
+  border-color: var(--green-edge);
+  background: color-mix(in srgb, var(--green) 18%, var(--bg-100));
+}
+
+.bs-boss-sensor.is-flagged .bs-boss-sensor-read,
+.bs-boss-sensor.is-agree .bs-boss-sensor-read,
+.bs-boss-sensor.is-disagree .bs-boss-sensor-read {
+  color: var(--ink);
+}
+
+.bs-boss-sensor:disabled:not(.is-flagged, .is-agree, .is-disagree) {
+  opacity: 0.55;
+}
+
+.bs-boss-hint,
+.bs-boss-result {
+  margin: 0;
+}
+
+.bs-boss-result {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--bg-sunken);
+}
+
+.bs-boss-result svg {
+  flex: none;
+  margin-top: 3px;
+}
+
+.bs-boss-result.is-ok svg {
+  color: var(--green-ink);
+}
+
+.bs-boss-result.is-bad svg {
+  color: var(--red);
+}
+
+.bs-boss-links {
+  margin-top: var(--space-2);
+}
+
+@keyframes bs-boss-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes bs-boss-pop {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+}
+
+@keyframes bs-boss-shake {
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+@keyframes bs-boss-ecg {
+  from {
+    stroke-dashoffset: 420;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bs-boss-blink {
+  to {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 640px) {
+  .bs-boss-panel {
+    padding: var(--space-4);
+  }
+
+  .bs-boss-sensors {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bs-boss,
+  .bs-boss-panel,
+  .bs-boss-alert,
+  .bs-boss-hp.is-hit,
+  .bs-boss-lives.is-hit {
+    animation: none;
+  }
+
+  .bs-boss-ecg path {
+    animation: none;
+    stroke-dasharray: none;
+  }
+}

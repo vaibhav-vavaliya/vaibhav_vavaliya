@@ -1,11 +1,12 @@
 'use client';
 
-import { useRef, type CSSProperties, type MouseEvent } from 'react';
+import { useRef, useState, type CSSProperties, type MouseEvent } from 'react';
 import { ArrowDown } from '@phosphor-icons/react/dist/ssr/ArrowDown';
 import { Play } from '@phosphor-icons/react/dist/ssr/Play';
 import { User } from '@phosphor-icons/react/dist/ssr/User';
-import { builds, profile } from '@/data/profile';
+import { profile } from '@/data/profile';
 import { AvatarCard } from './AvatarCard';
+import { BossFight } from './BossFight';
 import { BlockButton } from './BlockButton';
 import { fireConfettiFrom } from './Confetti';
 import { unlock } from './Achievements';
@@ -16,16 +17,16 @@ const i = (n: number) => ({ '--i': n }) as CSSProperties;
 
 export function Hero() {
   const played = useRef(false);
-  // The big Play opens the first build that has a public link.
-  const best = builds.find((b) => b.href);
+  const [game, setGame] = useState(false);
 
-  // First press of the big Play gets a confetti burst before the demo opens.
-  const onPlay = (e: MouseEvent<HTMLAnchorElement>) => {
+  // The big Play starts the boss fight; the first press also gets a confetti burst.
+  const onPlay = (e: MouseEvent<HTMLButtonElement>) => {
     if (!played.current) {
       played.current = true;
       fireConfettiFrom(e.currentTarget);
       unlock('Pressed play');
     }
+    setGame(true);
   };
 
   return (
@@ -44,9 +45,8 @@ export function Hero() {
           <BlockButton
             variant="green"
             size="lg"
-            href={best?.href ?? '#builds'}
-            {...(best?.href ? { target: '_blank', rel: 'noreferrer' } : {})}
             onClick={onPlay}
+            aria-haspopup="dialog"
             icon={<Play size={20} weight="fill" />}
           >
             Play my best build
@@ -69,6 +69,7 @@ export function Hero() {
         <XpBar {...profile.xp} />
       </div>
       <AvatarCard />
+      <BossFight open={game} onClose={() => setGame(false)} />
     </section>
   );
 }
